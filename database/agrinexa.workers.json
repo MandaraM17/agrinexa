@@ -5,7 +5,7 @@
   "name": "Ravi",
   "location": "Ujire",
   "phone": "9100000001",
-  "available": "true"
+  "available": "available"
 },
 {
   "_id": {
@@ -14,7 +14,7 @@
   "name": "Shankar",
   "location": "Belthangady",
   "phone": "9100000002",
-  "available": "true"
+  "available": "available"
 },
 {
   "_id": {
@@ -23,7 +23,7 @@
   "name": "Mohan",
   "location": "Kokkada",
   "phone": "9100000003",
-  "available": "true"
+  "available": "not available"
 },
 {
   "_id": {
@@ -32,7 +32,7 @@
   "name": "Raju",
   "location": "Dharmasthala",
   "phone": "9100000004",
-  "available": "true"
+  "available": "available"
 },
 {
   "_id": {
@@ -41,5 +41,5 @@
   "name": "Dinesh",
   "location": "Bantwal",
   "phone": "9100000006",
-  "available": "false"
+  "available": "not available"
 }]
