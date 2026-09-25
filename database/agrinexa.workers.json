@@ -1,0 +1,45 @@
+[{
+  "_id": {
+    "$oid": "6ab60b89ad233983a2e0a1f1"
+  },
+  "name": "Ravi",
+  "location": "Ujire",
+  "phone": "9100000001",
+  "available": "true"
+},
+{
+  "_id": {
+    "$oid": "6ab60bb2ad233983a2e0a1f3"
+  },
+  "name": "Shankar",
+  "location": "Belthangady",
+  "phone": "9100000002",
+  "available": "true"
+},
+{
+  "_id": {
+    "$oid": "6ab60bdfad233983a2e0a1f5"
+  },
+  "name": "Mohan",
+  "location": "Kokkada",
+  "phone": "9100000003",
+  "available": "true"
+},
+{
+  "_id": {
+    "$oid": "6ab60c03ad233983a2e0a1f7"
+  },
+  "name": "Raju",
+  "location": "Dharmasthala",
+  "phone": "9100000004",
+  "available": "true"
+},
+{
+  "_id": {
+    "$oid": "6ab60cffad233983a2e0a1f9"
+  },
+  "name": "Dinesh",
+  "location": "Bantwal",
+  "phone": "9100000006",
+  "available": "false"
+}]

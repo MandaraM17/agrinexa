@@ -1,0 +1,198 @@
+[{
+  "_id": {
+    "$oid": "6ab60623ad233983a2e0a1dd"
+  },
+  "name": "Manjunath",
+  "location": "Ujire",
+  "crop": "Arecanut",
+  "phone": "9876500001"
+},
+{
+  "_id": {
+    "$oid": "6ab607dcad233983a2e0a1e2"
+  },
+  "name": "Ramesh",
+  "location": "Belthangady",
+  "crop": "Arecanut",
+  "phone": "9000000002"
+},
+{
+  "_id": {
+    "$oid": "6ab607faad233983a2e0a1e4"
+  },
+  "name": "Suresh",
+  "location": "Puttur",
+  "crop": "Arecanut",
+  "phone": "9000000003"
+},
+{
+  "_id": {
+    "$oid": "6ab6086fad233983a2e0a1e6"
+  },
+  "name": "Prakash",
+  "location": "Sullia",
+  "crop": "Arecanut",
+  "phone": "9000000004"
+},
+{
+  "_id": {
+    "$oid": "6ab608b6ad233983a2e0a1ea"
+  },
+  "name": "Ganesh",
+  "location": "Udupi",
+  "crop": "Paddy",
+  "phone": "9000000006"
+},
+{
+  "_id": {
+    "$oid": "6ab608e0ad233983a2e0a1ec"
+  },
+  "name": "Harish",
+  "location": "Koppa",
+  "crop": "Paddy",
+  "phone": "9000000012"
+},
+{
+  "_id": {
+    "$oid": "6ab6093dad233983a2e0a1ee"
+  },
+  "name": "Karthik",
+  "location": "Sringeri",
+  "crop": "Arecanut",
+  "phone": "9000000011"
+},
+{
+  "_id": {
+    "$oid": "6ab612c0ad233983a2e0a208"
+  },
+  "name": "Deepak",
+  "location": "Kadaba",
+  "crop": "Arecanut",
+  "phone": "9000000013"
+},
+{
+  "_id": {
+    "$oid": "6ab612c0ad233983a2e0a209"
+  },
+  "name": "Rohith",
+  "location": "Bantwal",
+  "crop": "Arecanut",
+  "phone": "9000000014"
+},
+{
+  "_id": {
+    "$oid": "6ab612c0ad233983a2e0a20a"
+  },
+  "name": "Shivakumar",
+  "location": "Vittal",
+  "crop": "Arecanut",
+  "phone": "9000000015"
+},
+{
+  "_id": {
+    "$oid": "6ab612c0ad233983a2e0a20b"
+  },
+  "name": "Ashok",
+  "location": "Mulki",
+  "crop": "Paddy",
+  "phone": "9000000016"
+},
+{
+  "_id": {
+    "$oid": "6ab612c0ad233983a2e0a20c"
+  },
+  "name": "Manoj",
+  "location": "Karkala",
+  "crop": "Arecanut",
+  "phone": "9000000017"
+},
+{
+  "_id": {
+    "$oid": "6ab612c0ad233983a2e0a20d"
+  },
+  "name": "Raghav",
+  "location": "Brahmavar",
+  "crop": "Paddy",
+  "phone": "9000000018"
+},
+{
+  "_id": {
+    "$oid": "6ab612c0ad233983a2e0a20e"
+  },
+  "name": "Sandeep",
+  "location": "Kapu",
+  "crop": "Paddy",
+  "phone": "9000000019"
+},
+{
+  "_id": {
+    "$oid": "6ab612c0ad233983a2e0a20f"
+  },
+  "name": "Nithin",
+  "location": "Kundapura",
+  "crop": "Paddy",
+  "phone": "9000000020"
+},
+{
+  "_id": {
+    "$oid": "6ab612c0ad233983a2e0a210"
+  },
+  "name": "Chandru",
+  "location": "Hosanagara",
+  "crop": "Arecanut",
+  "phone": "9000000021"
+},
+{
+  "_id": {
+    "$oid": "6ab612c0ad233983a2e0a211"
+  },
+  "name": "Madan",
+  "location": "Thirthahalli",
+  "crop": "Paddy",
+  "phone": "9000000022"
+},
+{
+  "_id": {
+    "$oid": "6ab612c0ad233983a2e0a212"
+  },
+  "name": "Rakesh",
+  "location": "Sagara",
+  "crop": "Arecanut",
+  "phone": "9000000023"
+},
+{
+  "_id": {
+    "$oid": "6ab612c0ad233983a2e0a213"
+  },
+  "name": "Umesh",
+  "location": "Koppa",
+  "crop": "Arecanut",
+  "phone": "9000000024"
+},
+{
+  "_id": {
+    "$oid": "6ab612c0ad233983a2e0a214"
+  },
+  "name": "Naveen",
+  "location": "Mudigere",
+  "crop": "Paddy",
+  "phone": "9000000025"
+},
+{
+  "_id": {
+    "$oid": "6ab612c0ad233983a2e0a215"
+  },
+  "name": "Harish",
+  "location": "Sringeri",
+  "crop": "Arecanut",
+  "phone": "9000000026"
+},
+{
+  "_id": {
+    "$oid": "6ab612c0ad233983a2e0a216"
+  },
+  "name": "Santosh",
+  "location": "Shivamogga",
+  "crop": "Paddy",
+  "phone": "9000000027"
+}]

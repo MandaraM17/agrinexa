@@ -1,0 +1,100 @@
+[{
+  "_id": {
+    "$oid": "6ab60f10ad233983a2e0a1fc"
+  },
+  "name": "Coastal Agro Traders",
+  "location": "Udupi",
+  "crop": "Paddy",
+  "phone": "9200000001",
+  "price_per_kg": 32
+},
+{
+  "_id": {
+    "$oid": "6ab60f10ad233983a2e0a1fd"
+  },
+  "name": "Udupi Grain Buyers",
+  "location": "Kundapura",
+  "crop": "Paddy",
+  "phone": "9200000002",
+  "price_per_kg": 31
+},
+{
+  "_id": {
+    "$oid": "6ab60f10ad233983a2e0a1fe"
+  },
+  "name": "Malnad Areca Traders",
+  "location": "Puttur",
+  "crop": "Arecanut",
+  "phone": "9200000003",
+  "price_per_kg": 520
+},
+{
+  "_id": {
+    "$oid": "6ab60f10ad233983a2e0a1ff"
+  },
+  "name": "Puttur Agro Traders",
+  "location": "Puttur",
+  "crop": "Arecanut",
+  "phone": "9200000004",
+  "price_per_kg": 510
+},
+{
+  "_id": {
+    "$oid": "6ab60f10ad233983a2e0a200"
+  },
+  "name": "Belthangady Agro Buyers",
+  "location": "Belthangady",
+  "crop": "Arecanut",
+  "phone": "9200000005",
+  "price_per_kg": 515
+},
+{
+  "_id": {
+    "$oid": "6ab60f10ad233983a2e0a201"
+  },
+  "name": "Sullia Farm Buyers",
+  "location": "Sullia",
+  "crop": "Arecanut",
+  "phone": "9200000006",
+  "price_per_kg": 525
+},
+{
+  "_id": {
+    "$oid": "6ab60f10ad233983a2e0a202"
+  },
+  "name": "Thirthahalli Agro Market",
+  "location": "Thirthahalli",
+  "crop": "Arecanut",
+  "phone": "9200000007",
+  "price_per_kg": 530
+},
+{
+  "_id": {
+    "$oid": "6ab60f10ad233983a2e0a203"
+  },
+  "name": "Sagara Agro Traders",
+  "location": "Sagara",
+  "crop": "Paddy",
+  "phone": "9200000008",
+  "price_per_kg": 33
+},
+{
+  "_id": {
+    "$oid": "6ab60f10ad233983a2e0a204"
+  },
+  "name": "Malnad Paddy Buyers",
+  "location": "Hosanagara",
+  "crop": "Paddy",
+  "phone": "9200000009",
+  "price_per_kg": 32
+},
+{
+  "_id": {
+    "$oid": "6ab60f10ad233983a2e0a205"
+  },
+  "name": "Sringeri Farm Buyers",
+  "location": "Sringeri",
+  "crop": "Arecanut",
+  "phone": "9200000010",
+  "price_per_kg": 520
+}]
