@@ -1,0 +1,82 @@
+[
+    {
+        "id": 1,
+        "name": "Sri Lakshmi Farmers Cooperative Society",
+        "district": "Dakshina Kannada",
+        "taluk": "Belthangady",
+        "village": "Ujire",
+        "latitude": 12.995,
+        "longitude": 75.334,
+        "phone": "08256-236123"
+    },
+    {
+        "id": 2,
+        "name": "Belthangady Farmers Cooperative Society",
+        "district": "Dakshina Kannada",
+        "taluk": "Belthangady",
+        "village": "Belthangady",
+        "latitude": 13.000,
+        "longitude": 75.298,
+        "phone": "08256-232456"
+    },
+    {
+        "id": 3,
+        "name": "Dharmasthala Agricultural Cooperative Society",
+        "district": "Dakshina Kannada",
+        "taluk": "Belthangady",
+        "village": "Dharmasthala",
+        "latitude": 12.951,
+        "longitude": 75.380,
+        "phone": "08256-277789"
+    },
+    {
+        "id": 4,
+        "name": "Mangalore Farmers Cooperative Society",
+        "district": "Dakshina Kannada",
+        "taluk": "Mangalore",
+        "village": "Mangalore",
+        "latitude": 12.914,
+        "longitude": 74.856,
+        "phone": "0824-2223456"
+    },
+    {
+        "id": 5,
+        "name": "Puttur Farmers Cooperative Society",
+        "district": "Dakshina Kannada",
+        "taluk": "Puttur",
+        "village": "Puttur",
+        "latitude": 12.759,
+        "longitude": 75.205,
+        "phone": "08251-230456"
+    },
+    {
+        "id": 6,
+        "name": "Sullia Agricultural Cooperative Society",
+        "district": "Dakshina Kannada",
+        "taluk": "Sullia",
+        "village": "Sullia",
+        "latitude": 12.562,
+        "longitude": 75.387,
+        "phone": "08257-230789"
+    },
+    {
+        "id": 7,
+        "name": "Bantwal Farmers Cooperative Society",
+        "district": "Dakshina Kannada",
+        "taluk": "Bantwal",
+        "village": "Bantwal",
+        "latitude": 12.890,
+        "longitude": 75.035,
+        "phone": "08255-232123"
+    },
+    {
+        "id": 8,
+        "name": "Moodbidri Farmers Cooperative Society",
+        "district": "Dakshina Kannada",
+        "taluk": "Moodbidri",
+        "village": "Moodbidri",
+        "latitude": 13.066,
+        "longitude": 74.995,
+        "phone": "08258-236789"
+    }
+]

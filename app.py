@@ -6,7 +6,7 @@ from routes.market_routes import market_bp
 from routes.worker_routes import worker_bp
 from routes.dashboard_routes import dashboard_bp
 from routes.voice_routes import voice_bp
-
+from routes.weather_routes  import weather_bp
 app = Flask(__name__)
 
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///agrinexa.db"
@@ -20,7 +20,7 @@ app.register_blueprint(market_bp, url_prefix="/api/market")
 app.register_blueprint(worker_bp, url_prefix="/api/worker")
 app.register_blueprint(dashboard_bp, url_prefix="/api/dashboard")
 app.register_blueprint(voice_bp,url_prefix="/api/voice")
-
+app.register_blueprint(weather_bp, url_prefix="/api/weather")
 
 
 @app.route("/")
