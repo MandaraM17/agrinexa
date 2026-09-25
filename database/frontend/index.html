@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AgriNexa</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            🌿 <span data-key="brand">AgriNexa</span>
+        </div>
+
+        <nav>
+            <a href="index.html" data-key="home">Home</a>
+            <a href="weather.html" data-key="weather">Weather</a>
+            <a href="buyers.html" data-key="buyers">Buyers</a>
+            <a href="workers.html" data-key="workers">Workers</a>
+            <a href="farmers.html" data-key="farmers">Farmers</a>
+        </nav>
+
+        <!-- LANGUAGE SWITCH -->
+
+        <div class="language-switch">
+
+            <button
+                id="englishBtn"
+                onclick="changeLanguage('en')">
+                English
+            </button>
+
+            <span>|</span>
+
+            <button
+                id="kannadaBtn"
+                onclick="changeLanguage('kn')">
+                ಕನ್ನಡ
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= HERO SECTION ================= -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <h1>🌿 AgriNexa</h1>
+
+            <h2 data-key="heroTitle">
+                Smart Agricultural Support
+                <br>
+                for a Better Tomorrow
+            </h2>
+
+            <p data-key="heroDescription">
+                Connect. Get Advice. Grow Together.
+            </p>
+
+            <!-- GET STARTED -->
+
+            <button
+                class="get-started"
+                onclick="goToAccount()"
+                data-key="getStarted">
+
+                Get Started →
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= SERVICES SECTION ================= -->
+
+    <section class="services">
+
+        <h2 data-key="servicesTitle">
+            Our Services
+        </h2>
+
+        <p
+            class="service-description"
+            data-key="servicesDescription">
+
+            Everything you need for smarter farming.
+
+        </p>
+
+
+        <div class="service-container">
+
+
+            <!-- WEATHER -->
+
+            <div
+                class="service-card"
+                onclick="openPage('weather.html')">
+
+                <div class="service-icon">
+                    🌦️
+                </div>
+
+                <h3 data-key="weatherTitle">
+                    Weather Advisory
+                </h3>
+
+                <p data-key="weatherDescription">
+                    Get weather-based agricultural advice.
+                </p>
+
+                <button data-key="explore">
+                    Explore
+                </button>
+
+            </div>
+
+
+            <!-- BUYERS -->
+
+            <div
+                class="service-card"
+                onclick="openPage('buyers.html')">
+
+                <div class="service-icon">
+                    🛒
+                </div>
+
+                <h3 data-key="buyersTitle">
+                    Buyers
+                </h3>
+
+                <p data-key="buyersDescription">
+                    Find buyers and compare crop prices.
+                </p>
+
+                <button data-key="explore">
+                    Explore
+                </button>
+
+            </div>
+
+
+            <!-- WORKERS -->
+
+            <div
+                class="service-card"
+                onclick="openPage('workers.html')">
+
+                <div class="service-icon">
+                    👨‍🌾
+                </div>
+
+                <h3 data-key="workersTitle">
+                    Workers
+                </h3>
+
+                <p data-key="workersDescription">
+                    Find agricultural workers near you.
+                </p>
+
+                <button data-key="explore">
+                    Explore
+                </button>
+
+            </div>
+
+
+            <!-- FARMERS -->
+
+            <div
+                class="service-card"
+                onclick="openPage('farmers.html')">
+
+                <div class="service-icon">
+                    🌾
+                </div>
+
+                <h3 data-key="farmersTitle">
+                    Farmers
+                </h3>
+
+                <p data-key="farmersDescription">
+                    Connect with nearby farmers.
+                </p>
+
+                <button data-key="explore">
+                    Explore
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= LOCATION SECTION ================= -->
+
+    <section class="location-section">
+
+        <div class="location-content">
+
+            <div
+                class="location-title"
+                data-key="locationLabel">
+
+                📍 YOUR LOCATION
+
+            </div>
+
+
+            <h2 data-key="locationTitle">
+                Select your location
+            </h2>
+
+
+            <p data-key="locationDescription">
+
+                Choose your village or town
+                to find nearby agricultural services.
+
+            </p>
+
+
+            <!-- USE LOCATION BUTTON -->
+
+            <button
+                class="location-button"
+                onclick="getLocation()"
+                data-key="useLocation">
+
+                📍 Use my location
+
+            </button>
+
+
+            <!-- LOCATION INPUT -->
+
+            <div class="location-input">
+
+                <input
+                    type="text"
+                    id="locationInput"
+                    placeholder="Enter village or town"
+                    data-placeholder-en="Enter village or town"
+                    data-placeholder-kn="ಗ್ರಾಮ ಅಥವಾ ಪಟ್ಟಣವನ್ನು ನಮೂದಿಸಿ"
+                >
+
+
+                <button
+                    onclick="saveLocation()"
+                    data-key="set">
+
+                    Set
+
+                </button>
+
+
+                <!-- VOICE SEARCH -->
+
+                <button
+                    onclick="startVoice()"
+                    title="Kannada Voice Search">
+
+                    🎤
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <h3>🌿 AgriNexa</h3>
+
+        <p data-key="footerText">
+
+            Smart agriculture for a better tomorrow.
+
+        </p>
+
+    </footer>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+
+        /* ==========================================
+           ENGLISH AND KANNADA TRANSLATIONS
+        ========================================== */
+
+
+        const translations = {
+
+            en: {
+
+                brand: "AgriNexa",
+
+                home: "Home",
+
+                weather: "Weather",
+
+                buyers: "Buyers",
+
+                workers: "Workers",
+
+                farmers: "Farmers",
+
+
+                heroTitle:
+                    "Smart Agricultural Support<br>for a Better Tomorrow",
+
+                heroDescription:
+                    "Connect. Get Advice. Grow Together.",
+
+                getStarted:
+                    "Get Started →",
+
+
+                servicesTitle:
+                    "Our Services",
+
+                servicesDescription:
+                    "Everything you need for smarter farming.",
+
+
+                weatherTitle:
+                    "Weather Advisory",
+
+                weatherDescription:
+                    "Get weather-based agricultural advice.",
+
+
+                buyersTitle:
+                    "Buyers",
+
+                buyersDescription:
+                    "Find buyers and compare crop prices.",
+
+
+                workersTitle:
+                    "Workers",
+
+                workersDescription:
+                    "Find agricultural workers near you.",
+
+
+                farmersTitle:
+                    "Farmers",
+
+                farmersDescription:
+                    "Connect with nearby farmers.",
+
+
+                explore:
+                    "Explore",
+
+
+                locationLabel:
+                    "📍 YOUR LOCATION",
+
+                locationTitle:
+                    "Select your location",
+
+                locationDescription:
+                    "Choose your village or town to find nearby agricultural services.",
+
+                useLocation:
+                    "📍 Use my location",
+
+                set:
+                    "Set",
+
+
+                footerText:
+                    "Smart agriculture for a better tomorrow."
+
+            },
+
+
+            kn: {
+
+                brand: "ಅಗ್ರಿನೆಕ್ಸಾ",
+
+                home: "ಮುಖಪುಟ",
+
+                weather: "ಹವಾಮಾನ",
+
+                buyers: "ಖರೀದಿದಾರರು",
+
+                workers: "ಕಾರ್ಮಿಕರು",
+
+                farmers: "ರೈತರು",
+
+
+                heroTitle:
+                    "ಸ್ಮಾರ್ಟ್ ಕೃಷಿ ಸಹಾಯ<br>ಉತ್ತಮ ಭವಿಷ್ಯಕ್ಕಾಗಿ",
+
+                heroDescription:
+                    "ಸಂಪರ್ಕಿಸಿ. ಸಲಹೆ ಪಡೆಯಿರಿ. ಒಟ್ಟಾಗಿ ಬೆಳೆಯಿರಿ.",
+
+                getStarted:
+                    "ಪ್ರಾರಂಭಿಸಿ →",
+
+
+                servicesTitle:
+                    "ನಮ್ಮ ಸೇವೆಗಳು",
+
+                servicesDescription:
+                    "ಸ್ಮಾರ್ಟ್ ಕೃಷಿಗಾಗಿ ನಿಮಗೆ ಬೇಕಾದ ಎಲ್ಲಾ ಸೇವೆಗಳು.",
+
+
+                weatherTitle:
+                    "ಹವಾಮಾನ ಸಲಹೆ",
+
+                weatherDescription:
+                    "ಹವಾಮಾನ ಆಧಾರಿತ ಕೃಷಿ ಸಲಹೆಗಳನ್ನು ಪಡೆಯಿರಿ.",
+
+
+                buyersTitle:
+                    "ಖರೀದಿದಾರರು",
+
+                buyersDescription:
+                    "ಖರೀದಿದಾರರನ್ನು ಹುಡುಕಿ ಮತ್ತು ಬೆಳೆ ಬೆಲೆಗಳನ್ನು ಹೋಲಿಸಿ.",
+
+
+                workersTitle:
+                    "ಕಾರ್ಮಿಕರು",
+
+                workersDescription:
+                    "ನಿಮ್ಮ ಸಮೀಪದ ಕೃಷಿ ಕಾರ್ಮಿಕರನ್ನು ಹುಡುಕಿ.",
+
+
+                farmersTitle:
+                    "ರೈತರು",
+
+                farmersDescription:
+                    "ನಿಮ್ಮ ಸಮೀಪದ ರೈತರೊಂದಿಗೆ ಸಂಪರ್ಕ ಸಾಧಿಸಿ.",
+
+
+                explore:
+                    "ವೀಕ್ಷಿಸಿ",
+
+
+                locationLabel:
+                    "📍 ನಿಮ್ಮ ಸ್ಥಳ",
+
+                locationTitle:
+                    "ನಿಮ್ಮ ಸ್ಥಳವನ್ನು ಆಯ್ಕೆಮಾಡಿ",
+
+                locationDescription:
+                    "ಹತ್ತಿರದ ಕೃಷಿ ಸೇವೆಗಳನ್ನು ಹುಡುಕಲು ನಿಮ್ಮ ಗ್ರಾಮ ಅಥವಾ ಪಟ್ಟಣವನ್ನು ಆಯ್ಕೆಮಾಡಿ.",
+
+                useLocation:
+                    "📍 ನನ್ನ ಸ್ಥಳವನ್ನು ಬಳಸಿ",
+
+                set:
+                    "ಹೊಂದಿಸಿ",
+
+
+                footerText:
+                    "ಉತ್ತಮ ಭವಿಷ್ಯಕ್ಕಾಗಿ ಸ್ಮಾರ್ಟ್ ಕೃಷಿ."
+
+            }
+
+        };
+
+
+        /* ==========================================
+           CHANGE LANGUAGE
+        ========================================== */
+
+
+        function changeLanguage(language) {
+
+            const selectedLanguage =
+                translations[language];
+
+
+            document
+                .querySelectorAll("[data-key]")
+                .forEach(function(element) {
+
+                    const key =
+                        element.getAttribute("data-key");
+
+
+                    if (selectedLanguage[key]) {
+
+                        element.innerHTML =
+                            selectedLanguage[key];
+
+                    }
+
+                });
+
+
+            /* Change location placeholder */
+
+            const locationInput =
+                document.getElementById("locationInput");
+
+
+            if (language === "kn") {
+
+                locationInput.placeholder =
+                    locationInput.getAttribute(
+                        "data-placeholder-kn"
+                    );
+
+            } else {
+
+                locationInput.placeholder =
+                    locationInput.getAttribute(
+                        "data-placeholder-en"
+                    );
+
+            }
+
+
+            /* Change HTML language */
+
+            document.documentElement.lang =
+                language === "kn" ? "kn" : "en";
+
+
+            /* Remember selected language */
+
+            localStorage.setItem(
+                "agrinexaLanguage",
+                language
+            );
+
+        }
+
+
+        /* ==========================================
+           LOAD SAVED LANGUAGE
+        ========================================== */
+
+
+        window.onload = function() {
+
+            const savedLanguage =
+                localStorage.getItem(
+                    "agrinexaLanguage"
+                );
+
+
+            if (savedLanguage) {
+
+                changeLanguage(savedLanguage);
+
+            }
+
+        };
+
+
+        /* ==========================================
+           OPEN OTHER PAGES
+        ========================================== */
+
+
+        function openPage(page) {
+
+            window.location.href = page;
+
+        }
+
+
+        /* ==========================================
+           GET STARTED
+           NOW OPENS ACCOUNT PAGE
+        ========================================== */
+
+
+        function goToAccount() {
+
+            window.location.href = "account.html";
+
+        }
+
+
+        /* ==========================================
+           SAVE LOCATION
+        ========================================== */
+
+
+        function saveLocation() {
+
+            const location =
+                document.getElementById(
+                    "locationInput"
+                ).value;
+
+
+            if (location.trim() === "") {
+
+                alert(
+                    "Please enter your location."
+                );
+
+                return;
+
+            }
+
+
+            localStorage.setItem(
+                "agrinexaLocation",
+                location
+            );
+
+
+            alert(
+                "Location saved: " + location
+            );
+
+        }
+
+
+        /* ==========================================
+           USE CURRENT LOCATION
+        ========================================== */
+
+
+        function getLocation() {
+
+            if (!navigator.geolocation) {
+
+                alert(
+                    "Geolocation is not supported by your browser."
+                );
+
+                return;
+
+            }
+
+
+            navigator.geolocation.getCurrentPosition(
+
+                function(position) {
+
+                    const latitude =
+                        position.coords.latitude;
+
+                    const longitude =
+                        position.coords.longitude;
+
+
+                    document.getElementById(
+                        "locationInput"
+                    ).value =
+                        latitude.toFixed(4)
+                        + ", "
+                        + longitude.toFixed(4);
+
+                },
+
+
+                function() {
+
+                    alert(
+                        "Unable to get your location."
+                    );
+
+                }
+
+            );
+
+        }
+
+
+        /* ==========================================
+           KANNADA VOICE SEARCH
+        ========================================== */
+
+
+        function startVoice() {
+
+            const SpeechRecognition =
+                window.SpeechRecognition ||
+                window.webkitSpeechRecognition;
+
+
+            if (!SpeechRecognition) {
+
+                alert(
+                    "Voice search is not supported. Please use Google Chrome."
+                );
+
+                return;
+
+            }
+
+
+            const recognition =
+                new SpeechRecognition();
+
+
+            recognition.lang = "kn-IN";
+
+            recognition.interimResults = false;
+
+            recognition.maxAlternatives = 1;
+
+
+            recognition.start();
+
+
+            recognition.onresult =
+                function(event) {
+
+                    const text =
+                        event.results[0][0]
+                        .transcript;
+
+
+                    document.getElementById(
+                        "locationInput"
+                    ).value = text;
+
+                };
+
+
+            recognition.onerror =
+                function() {
+
+                    alert(
+                        "Could not recognize your voice."
+                    );
+
+                };
+
+        }
+
+    </script>
+
+</body>
+
+</html>

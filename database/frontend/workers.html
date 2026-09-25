@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriNexa - Workers</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+
+    <div class="logo">
+        🌿 <span id="brandText">AgriNexa</span>
+    </div>
+
+    <nav>
+        <a href="index.html" id="homeText">Home</a>
+        <a href="weather.html" id="weatherText">Weather</a>
+        <a href="buyers.html" id="buyersText">Buyers</a>
+        <a href="workers.html" class="active" id="workersText">Workers</a>
+        <a href="farmers.html" id="farmersText">Farmers</a>
+    </nav>
+
+    <div class="language-switch">
+
+        <button id="englishBtn" onclick="changeLanguage('en')">
+            English
+        </button>
+
+        <span>|</span>
+
+        <button id="kannadaBtn" onclick="changeLanguage('kn')">
+            ಕನ್ನಡ
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- PAGE HEADER -->
+<section class="buyers-header">
+
+    <h1 id="pageTitle">
+        👨‍🌾 Agricultural Workers
+    </h1>
+
+    <p id="pageDescription">
+        Find available agricultural workers near your location.
+    </p>
+
+</section>
+
+
+<!-- SEARCH -->
+<section class="buyer-search-section">
+
+    <div class="buyer-search-box">
+
+        <h2 id="searchTitle">
+            📍 Find Workers Near You
+        </h2>
+
+
+        <!-- LOCATION + MICROPHONE -->
+        <div class="voice-search-box">
+
+            <input
+                type="text"
+                id="workerLocation"
+                placeholder="Enter location"
+            >
+
+            <button
+                type="button"
+                class="microphone-btn"
+                onclick="startWorkerVoice()"
+                title="Voice Search"
+            >
+                🎤
+            </button>
+
+        </div>
+
+
+        <!-- AVAILABILITY -->
+        <select id="workerAvailability">
+
+            <option value="all">
+                All
+            </option>
+
+            <option value="available">
+                Available
+            </option>
+
+            <option value="not_available">
+                Not Available
+            </option>
+
+        </select>
+
+
+        <!-- SEARCH -->
+        <button
+            class="buyer-search-btn"
+            onclick="searchWorkers()"
+            id="searchButton"
+        >
+            🔍 Search
+        </button>
+
+        <p id="voiceMessage" class="voice-message"></p>
+
+    </div>
+
+</section>
+
+
+<!-- WORKERS -->
+<section class="buyers-page">
+
+    <div class="buyer-grid">
+
+
+        <!-- WORKER 1 -->
+        <div
+            class="buyer-card"
+            data-location="ujire"
+            data-availability="available"
+        >
+
+            <div class="buyer-icon">
+                👨‍🌾
+            </div>
+
+            <h3>
+                Ramesh
+            </h3>
+
+            <p>
+                📍
+                <strong class="locationLabel">
+                    Location:
+                </strong>
+
+                <span
+                    class="locationValue"
+                    data-location-name="ujire"
+                >
+                    Ujire
+                </span>
+            </p>
+
+            <p>
+                📞
+                <strong class="phoneLabel">
+                    Phone:
+                </strong>
+
+                9876543210
+            </p>
+
+            <p>
+                🟢
+                <strong class="availabilityLabel">
+                    Availability:
+                </strong>
+
+                <span
+                    class="availabilityValue"
+                    data-availability="available"
+                >
+                    Available
+                </span>
+            </p>
+
+        </div>
+
+
+        <!-- WORKER 2 -->
+        <div
+            class="buyer-card"
+            data-location="belthangady"
+            data-availability="available"
+        >
+
+            <div class="buyer-icon">
+                👨‍🌾
+            </div>
+
+            <h3>
+                Manjunath
+            </h3>
+
+            <p>
+                📍
+                <strong class="locationLabel">
+                    Location:
+                </strong>
+
+                <span
+                    class="locationValue"
+                    data-location-name="belthangady"
+                >
+                    Belthangady
+                </span>
+            </p>
+
+            <p>
+                📞
+                <strong class="phoneLabel">
+                    Phone:
+                </strong>
+
+                9876501234
+            </p>
+
+            <p>
+                🟢
+                <strong class="availabilityLabel">
+                    Availability:
+                </strong>
+
+                <span
+                    class="availabilityValue"
+                    data-availability="available"
+                >
+                    Available
+                </span>
+            </p>
+
+        </div>
+
+
+        <!-- WORKER 3 -->
+        <div
+            class="buyer-card"
+            data-location="bantwal"
+            data-availability="not_available"
+        >
+
+            <div class="buyer-icon">
+                👨‍🌾
+            </div>
+
+            <h3>
+                Suresh
+            </h3>
+
+            <p>
+                📍
+                <strong class="locationLabel">
+                    Location:
+                </strong>
+
+                <span
+                    class="locationValue"
+                    data-location-name="bantwal"
+                >
+                    Bantwal
+                </span>
+            </p>
+
+            <p>
+                📞
+                <strong class="phoneLabel">
+                    Phone:
+                </strong>
+
+                9123456780
+            </p>
+
+            <p>
+                🔴
+                <strong class="availabilityLabel">
+                    Availability:
+                </strong>
+
+                <span
+                    class="availabilityValue"
+                    data-availability="not_available"
+                >
+                    Not Available
+                </span>
+            </p>
+
+        </div>
+
+
+        <!-- WORKER 4 -->
+        <div
+            class="buyer-card"
+            data-location="puttur"
+            data-availability="available"
+        >
+
+            <div class="buyer-icon">
+                👨‍🌾
+            </div>
+
+            <h3>
+                Prakash
+            </h3>
+
+            <p>
+                📍
+                <strong class="locationLabel">
+                    Location:
+                </strong>
+
+                <span
+                    class="locationValue"
+                    data-location-name="puttur"
+                >
+                    Puttur
+                </span>
+            </p>
+
+            <p>
+                📞
+                <strong class="phoneLabel">
+                    Phone:
+                </strong>
+
+                9012345678
+            </p>
+
+            <p>
+                🟢
+                <strong class="availabilityLabel">
+                    Availability:
+                </strong>
+
+                <span
+                    class="availabilityValue"
+                    data-availability="available"
+                >
+                    Available
+                </span>
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- NO RESULTS -->
+    <div
+        id="workerNoResults"
+        class="buyer-no-results"
+    >
+
+        <h3 id="noResultsText">
+            No workers found.
+        </h3>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+
+    <p id="footerText">
+        Smart agriculture for a better tomorrow.
+    </p>
+
+</footer>
+
+
+<script>
+
+/* =========================
+   TRANSLATIONS
+========================= */
+
+const translations = {
+
+    en: {
+
+        brand: "AgriNexa",
+
+        home: "Home",
+        weather: "Weather",
+        buyers: "Buyers",
+        workers: "Workers",
+        farmers: "Farmers",
+
+        pageTitle:
+            "👨‍🌾 Agricultural Workers",
+
+        pageDescription:
+            "Find available agricultural workers near your location.",
+
+        searchTitle:
+            "📍 Find Workers Near You",
+
+        location:
+            "Location:",
+
+        phone:
+            "Phone:",
+
+        availability:
+            "Availability:",
+
+        placeholder:
+            "Enter location",
+
+        all:
+            "All",
+
+        available:
+            "Available",
+
+        notAvailable:
+            "Not Available",
+
+        search:
+            "🔍 Search",
+
+        noResults:
+            "No workers found.",
+
+        listening:
+            "🎤 Listening... Speak your location",
+
+        voiceNotSupported:
+            "Voice search is not supported in this browser.",
+
+        voiceError:
+            "Could not understand the voice input.",
+
+        footer:
+            "Smart agriculture for a better tomorrow.",
+
+        ujire:
+            "Ujire",
+
+        belthangady:
+            "Belthangady",
+
+        bantwal:
+            "Bantwal",
+
+        puttur:
+            "Puttur"
+    },
+
+
+    kn: {
+
+        brand:
+            "ಅಗ್ರಿನೆಕ್ಸಾ",
+
+        home:
+            "ಮುಖಪುಟ",
+
+        weather:
+            "ಹವಾಮಾನ",
+
+        buyers:
+            "ಖರೀದಿದಾರರು",
+
+        workers:
+            "ಕಾರ್ಮಿಕರು",
+
+        farmers:
+            "ರೈತರು",
+
+        pageTitle:
+            "👨‍🌾 ಕೃಷಿ ಕಾರ್ಮಿಕರು",
+
+        pageDescription:
+            "ನಿಮ್ಮ ಸ್ಥಳದ ಸಮೀಪದ ಲಭ್ಯವಿರುವ ಕೃಷಿ ಕಾರ್ಮಿಕರನ್ನು ಹುಡುಕಿ.",
+
+        searchTitle:
+            "📍 ನಿಮ್ಮ ಸಮೀಪದ ಕಾರ್ಮಿಕರನ್ನು ಹುಡುಕಿ",
+
+        location:
+            "ಸ್ಥಳ:",
+
+        phone:
+            "ದೂರವಾಣಿ:",
+
+        availability:
+            "ಲಭ್ಯತೆ:",
+
+        placeholder:
+            "ಸ್ಥಳವನ್ನು ನಮೂದಿಸಿ",
+
+        all:
+            "ಎಲ್ಲಾ",
+
+        available:
+            "ಲಭ್ಯವಿದೆ",
+
+        notAvailable:
+            "ಲಭ್ಯವಿಲ್ಲ",
+
+        search:
+            "🔍 ಹುಡುಕಿ",
+
+        noResults:
+            "ಯಾವುದೇ ಕಾರ್ಮಿಕರು ಕಂಡುಬಂದಿಲ್ಲ.",
+
+        listening:
+            "🎤 ಕೇಳಲಾಗುತ್ತಿದೆ... ನಿಮ್ಮ ಸ್ಥಳವನ್ನು ಹೇಳಿ",
+
+        voiceNotSupported:
+            "ಈ ಬ್ರೌಸರ್‌ನಲ್ಲಿ ಧ್ವನಿ ಹುಡುಕಾಟ ಲಭ್ಯವಿಲ್ಲ.",
+
+        voiceError:
+            "ಧ್ವನಿ ಇನ್‌ಪುಟ್ ಅರ್ಥವಾಗಲಿಲ್ಲ.",
+
+        footer:
+            "ಉತ್ತಮ ಭವಿಷ್ಯಕ್ಕಾಗಿ ಸ್ಮಾರ್ಟ್ ಕೃಷಿ.",
+
+        ujire:
+            "ಉಜಿರೆ",
+
+        belthangady:
+            "ಬೆಳ್ತಂಗಡಿ",
+
+        bantwal:
+            "ಬಂಟ್ವಾಳ",
+
+        puttur:
+            "ಪುತ್ತೂರು"
+    }
+
+};
+
+
+/* =========================
+   LANGUAGE
+========================= */
+
+function changeLanguage(language) {
+
+    const t = translations[language];
+
+    if (!t) return;
+
+
+    document.getElementById("brandText").textContent =
+        t.brand;
+
+    document.getElementById("homeText").textContent =
+        t.home;
+
+    document.getElementById("weatherText").textContent =
+        t.weather;
+
+    document.getElementById("buyersText").textContent =
+        t.buyers;
+
+    document.getElementById("workersText").textContent =
+        t.workers;
+
+    document.getElementById("farmersText").textContent =
+        t.farmers;
+
+
+    document.getElementById("pageTitle").textContent =
+        t.pageTitle;
+
+    document.getElementById("pageDescription").textContent =
+        t.pageDescription;
+
+    document.getElementById("searchTitle").textContent =
+        t.searchTitle;
+
+
+    document.querySelectorAll(".locationLabel")
+        .forEach(element => {
+
+            element.textContent = t.location;
+
+        });
+
+
+    document.querySelectorAll(".phoneLabel")
+        .forEach(element => {
+
+            element.textContent = t.phone;
+
+        });
+
+
+    document.querySelectorAll(".availabilityLabel")
+        .forEach(element => {
+
+            element.textContent = t.availability;
+
+        });
+
+
+    /* LOCATIONS */
+
+    document.querySelectorAll(".locationValue")
+        .forEach(element => {
+
+            const place =
+                element.getAttribute(
+                    "data-location-name"
+                );
+
+            if (place === "ujire")
+                element.textContent = t.ujire;
+
+            else if (place === "belthangady")
+                element.textContent = t.belthangady;
+
+            else if (place === "bantwal")
+                element.textContent = t.bantwal;
+
+            else if (place === "puttur")
+                element.textContent = t.puttur;
+
+        });
+
+
+    /* AVAILABILITY */
+
+    document.querySelectorAll(".availabilityValue")
+        .forEach(element => {
+
+            const status =
+                element.getAttribute(
+                    "data-availability"
+                );
+
+            if (status === "available")
+                element.textContent = t.available;
+
+            else if (status === "not_available")
+                element.textContent = t.notAvailable;
+
+        });
+
+
+    /* DROPDOWN */
+
+    const availability =
+        document.getElementById(
+            "workerAvailability"
+        );
+
+    availability.options[0].textContent =
+        t.all;
+
+    availability.options[1].textContent =
+        t.available;
+
+    availability.options[2].textContent =
+        t.notAvailable;
+
+
+    document.getElementById("searchButton")
+        .textContent = t.search;
+
+
+    document.getElementById("noResultsText")
+        .textContent = t.noResults;
+
+
+    document.getElementById("workerLocation")
+        .placeholder = t.placeholder;
+
+
+    document.documentElement.lang =
+        language === "kn" ? "kn" : "en";
+
+
+    localStorage.setItem(
+        "agrinexaLanguage",
+        language
+    );
+
+
+    document.getElementById("englishBtn")
+        .classList.remove("selected");
+
+    document.getElementById("kannadaBtn")
+        .classList.remove("selected");
+
+
+    if (language === "kn") {
+
+        document.getElementById("kannadaBtn")
+            .classList.add("selected");
+
+    } else {
+
+        document.getElementById("englishBtn")
+            .classList.add("selected");
+
+    }
+
+}
+
+
+/* =========================
+   WORKER SEARCH
+========================= */
+
+function searchWorkers() {
+
+    const location =
+        document.getElementById("workerLocation")
+            .value
+            .trim()
+            .toLowerCase();
+
+    const availability =
+        document.getElementById(
+            "workerAvailability"
+        ).value;
+
+
+    const workers =
+        document.querySelectorAll(".buyer-card");
+
+    let found = false;
+
+
+    workers.forEach(worker => {
+
+        const workerLocation =
+            worker.getAttribute(
+                "data-location"
+            );
+
+        const workerAvailability =
+            worker.getAttribute(
+                "data-availability"
+            );
+
+
+        const locationMatch =
+            location === "" ||
+            workerLocation.includes(location);
+
+
+        const availabilityMatch =
+            availability === "all" ||
+            workerAvailability === availability;
+
+
+        if (
+            locationMatch &&
+            availabilityMatch
+        ) {
+
+            worker.style.display = "";
+
+            found = true;
+
+        } else {
+
+            worker.style.display = "none";
+
+        }
+
+    });
+
+
+    document.getElementById(
+        "workerNoResults"
+    ).style.display =
+        found ? "none" : "block";
+
+}
+
+
+/* =========================
+   WORKER VOICE SEARCH
+========================= */
+
+function startWorkerVoice() {
+
+    const language =
+        localStorage.getItem(
+            "agrinexaLanguage"
+        ) || "en";
+
+
+    const SpeechRecognition =
+        window.SpeechRecognition ||
+        window.webkitSpeechRecognition;
+
+
+    if (!SpeechRecognition) {
+
+        alert(
+            translations[language]
+                .voiceNotSupported
+        );
+
+        return;
+    }
+
+
+    const recognition =
+        new SpeechRecognition();
+
+
+    recognition.lang =
+        language === "kn"
+            ? "kn-IN"
+            : "en-IN";
+
+
+    recognition.interimResults = false;
+
+    recognition.maxAlternatives = 1;
+
+
+    document.getElementById(
+        "voiceMessage"
+    ).textContent =
+        translations[language]
+            .listening;
+
+
+    recognition.start();
+
+
+    recognition.onresult =
+        function(event) {
+
+            const spokenText =
+                event.results[0][0]
+                    .transcript;
+
+
+            document.getElementById(
+                "workerLocation"
+            ).value = spokenText;
+
+
+            document.getElementById(
+                "voiceMessage"
+            ).textContent = "";
+
+
+            searchWorkers();
+
+        };
+
+
+    recognition.onerror =
+        function() {
+
+            document.getElementById(
+                "voiceMessage"
+            ).textContent = "";
+
+
+            alert(
+                translations[language]
+                    .voiceError
+            );
+
+        };
+
+}
+
+
+/* =========================
+   PAGE LOAD
+========================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        const savedLanguage =
+            localStorage.getItem(
+                "agrinexaLanguage"
+            );
+
+
+        if (savedLanguage === "kn") {
+
+            changeLanguage("kn");
+
+        } else {
+
+            changeLanguage("en");
+
+        }
+
+
+        document.getElementById(
+            "workerNoResults"
+        ).style.display = "none";
+
+    }
+);
+
+</script>
+
+
+<!-- MICROPHONE STYLING -->
+<style>
+
+.voice-search-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.voice-search-box input {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+.microphone-btn {
+    width: 48px;
+    height: 45px;
+    border: none;
+    border-radius: 8px;
+    background: #2e7d32;
+    color: white;
+    font-size: 21px;
+    cursor: pointer;
+}
+
+.microphone-btn:hover {
+    background: #1b5e20;
+}
+
+.voice-message {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #2e7d32;
+}
+
+</style>
+
+</body>
+</html>

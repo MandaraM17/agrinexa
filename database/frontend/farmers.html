@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AgriNexa - Farmers</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f8f3;
+            color: #333;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            background: #2e7d32;
+            color: white;
+            padding: 15px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .navbar nav {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .navbar nav a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .navbar nav a:hover {
+            text-decoration: underline;
+        }
+
+        .language-switch button {
+            background: transparent;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* MAIN */
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 40px 20px;
+        }
+
+        .heading {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .heading h1 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+        }
+
+        /* SEARCH */
+        .search-box {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .search-box h2 {
+            color: #2e7d32;
+            margin-bottom: 20px;
+        }
+
+        .location-row {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        #locationInput {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+            font-size: 15px;
+        }
+
+        .mic-btn {
+            width: 48px;
+            border: none;
+            border-radius: 7px;
+            background: #2e7d32;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .mic-btn:hover {
+            background: #1b5e20;
+        }
+
+        #cropFilter {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+            margin-bottom: 15px;
+            font-size: 15px;
+        }
+
+        .search-btn {
+            width: 100%;
+            padding: 12px;
+            background: #2e7d32;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .search-btn:hover {
+            background: #1b5e20;
+        }
+
+        #voiceMessage {
+            margin-top: 10px;
+            color: #2e7d32;
+        }
+
+        /* FARMER CARDS */
+        .farmers {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .farmer-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 5px solid #2e7d32;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .farmer-card h3 {
+            color: #2e7d32;
+            margin-bottom: 18px;
+            font-size: 22px;
+        }
+
+        .info {
+            margin-bottom: 12px;
+        }
+
+        .info strong {
+            margin-right: 5px;
+        }
+
+        .contact-btn {
+            width: 100%;
+            margin-top: 10px;
+            padding: 11px;
+            border: none;
+            border-radius: 7px;
+            background: #2e7d32;
+            color: white;
+            cursor: pointer;
+        }
+
+        .contact-btn:hover {
+            background: #1b5e20;
+        }
+
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #1b5e20;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        /* MOBILE */
+        @media (max-width: 700px) {
+
+            .navbar {
+                flex-direction: column;
+                padding: 15px 20px;
+            }
+
+            .farmers {
+                grid-template-columns: 1fr;
+            }
+
+            .location-row {
+                flex-direction: row;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+
+    <div class="logo">
+        🌿 <span data-key="brand">AgriNexa</span>
+    </div>
+
+    <nav>
+        <a href="index.html" data-key="home">Home</a>
+        <a href="weather.html" data-key="weather">Weather</a>
+        <a href="buyers.html" data-key="buyers">Buyers</a>
+        <a href="workers.html" data-key="workers">Workers</a>
+        <a href="farmers.html" data-key="farmers">Farmers</a>
+    </nav>
+
+    <div class="language-switch">
+        <button onclick="changeLanguage('en')">English</button>
+        |
+        <button onclick="changeLanguage('kn')">ಕನ್ನಡ</button>
+    </div>
+
+</header>
+
+
+<!-- MAIN -->
+<div class="container">
+
+    <div class="heading">
+        <h1 data-key="title">👨‍🌾 Farmers</h1>
+
+        <p data-key="description">
+            Find farmers near your location.
+        </p>
+    </div>
+
+
+    <!-- SEARCH BOX -->
+    <div class="search-box">
+
+        <h2 data-key="searchTitle">
+            📍 Find Farmers Near You
+        </h2>
+
+        <div class="location-row">
+
+            <input
+                type="text"
+                id="locationInput"
+                placeholder="Enter location"
+            >
+
+            <button
+                class="mic-btn"
+                onclick="startVoice()"
+                title="Voice Search"
+            >
+                🎤
+            </button>
+
+        </div>
+
+
+        <select id="cropFilter">
+
+            <option value="all" data-key="allCrops">
+                All Crops
+            </option>
+
+            <option value="arecanut" data-key="arecanut">
+                Arecanut
+            </option>
+
+            <option value="paddy" data-key="paddy">
+                Paddy
+            </option>
+
+        </select>
+
+
+        <button
+            class="search-btn"
+            onclick="searchFarmers()"
+            data-key="search"
+        >
+            🔍 Search
+        </button>
+
+        <div id="voiceMessage"></div>
+
+    </div>
+
+
+    <!-- FARMERS -->
+    <div class="farmers" id="farmersContainer">
+
+
+        <!-- FARMER 1 -->
+        <div
+            class="farmer-card"
+            data-location="ujire"
+            data-crop="arecanut"
+        >
+
+            <h3>Ramesh</h3>
+
+            <div class="info">
+                <strong data-key="location">Location:</strong>
+                <span class="location-name">Ujire</span>
+            </div>
+
+            <div class="info">
+                <strong data-key="crop">Crop:</strong>
+                <span data-key="arecanut">Arecanut</span>
+            </div>
+
+            <div class="info">
+                <strong data-key="phone">Phone:</strong>
+                9876543210
+            </div>
+
+            <button
+                class="contact-btn"
+                onclick="contactFarmer('9876543210')"
+                data-key="contact"
+            >
+                📞 Contact Farmer
+            </button>
+
+        </div>
+
+
+        <!-- FARMER 2 -->
+        <div
+            class="farmer-card"
+            data-location="belthangady"
+            data-crop="paddy"
+        >
+
+            <h3>Manjunath</h3>
+
+            <div class="info">
+                <strong data-key="location">Location:</strong>
+                <span class="location-name">Belthangady</span>
+            </div>
+
+            <div class="info">
+                <strong data-key="crop">Crop:</strong>
+                <span data-key="paddy">Paddy</span>
+            </div>
+
+            <div class="info">
+                <strong data-key="phone">Phone:</strong>
+                9876501234
+            </div>
+
+            <button
+                class="contact-btn"
+                onclick="contactFarmer('9876501234')"
+                data-key="contact"
+            >
+                📞 Contact Farmer
+            </button>
+
+        </div>
+
+
+        <!-- FARMER 3 -->
+        <div
+            class="farmer-card"
+            data-location="bantwal"
+            data-crop="arecanut"
+        >
+
+            <h3>Suresh</h3>
+
+            <div class="info">
+                <strong data-key="location">Location:</strong>
+                <span class="location-name">Bantwal</span>
+            </div>
+
+            <div class="info">
+                <strong data-key="crop">Crop:</strong>
+                <span data-key="arecanut">Arecanut</span>
+            </div>
+
+            <div class="info">
+                <strong data-key="phone">Phone:</strong>
+                9123456780
+            </div>
+
+            <button
+                class="contact-btn"
+                onclick="contactFarmer('9123456780')"
+                data-key="contact"
+            >
+                📞 Contact Farmer
+            </button>
+
+        </div>
+
+
+        <!-- FARMER 4 -->
+        <div
+            class="farmer-card"
+            data-location="puttur"
+            data-crop="paddy"
+        >
+
+            <h3>Prakash</h3>
+
+            <div class="info">
+                <strong data-key="location">Location:</strong>
+                <span class="location-name">Puttur</span>
+            </div>
+
+            <div class="info">
+                <strong data-key="crop">Crop:</strong>
+                <span data-key="paddy">Paddy</span>
+            </div>
+
+            <div class="info">
+                <strong data-key="phone">Phone:</strong>
+                9012345678
+            </div>
+
+            <button
+                class="contact-btn"
+                onclick="contactFarmer('9012345678')"
+                data-key="contact"
+            >
+                📞 Contact Farmer
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- FOOTER -->
+<footer>
+    <p data-key="footer">
+        Smart agriculture for a better tomorrow.
+    </p>
+</footer>
+
+
+<script>
+
+    /* =========================
+       TRANSLATIONS
+    ========================= */
+
+    const translations = {
+
+        en: {
+
+            brand: "AgriNexa",
+
+            home: "Home",
+            weather: "Weather",
+            buyers: "Buyers",
+            workers: "Workers",
+            farmers: "Farmers",
+
+            title: "👨‍🌾 Farmers",
+
+            description:
+                "Find farmers near your location.",
+
+            searchTitle:
+                "📍 Find Farmers Near You",
+
+            location:
+                "Location:",
+
+            crop:
+                "Crop:",
+
+            phone:
+                "Phone:",
+
+            allCrops:
+                "All Crops",
+
+            arecanut:
+                "Arecanut",
+
+            paddy:
+                "Paddy",
+
+            search:
+                "🔍 Search",
+
+            contact:
+                "📞 Contact Farmer",
+
+            footer:
+                "Smart agriculture for a better tomorrow.",
+
+            listening:
+                "🎤 Listening... Speak your location",
+
+            voiceError:
+                "Could not understand the voice input.",
+
+            voiceNotSupported:
+                "Voice search is not supported in this browser."
+
+        },
+
+
+        kn: {
+
+            brand: "ಅಗ್ರಿನೆಕ್ಸಾ",
+
+            home: "ಮುಖಪುಟ",
+            weather: "ಹವಾಮಾನ",
+            buyers: "ಖರೀದಿದಾರರು",
+            workers: "ಕಾರ್ಮಿಕರು",
+            farmers: "ರೈತರು",
+
+            title: "👨‍🌾 ರೈತರು",
+
+            description:
+                "ನಿಮ್ಮ ಸ್ಥಳದ ಸಮೀಪದ ರೈತರನ್ನು ಹುಡುಕಿ.",
+
+            searchTitle:
+                "📍 ನಿಮ್ಮ ಸಮೀಪದ ರೈತರನ್ನು ಹುಡುಕಿ",
+
+            location:
+                "ಸ್ಥಳ:",
+
+            crop:
+                "ಬೆಳೆ:",
+
+            phone:
+                "ದೂರವಾಣಿ:",
+
+            allCrops:
+                "ಎಲ್ಲಾ ಬೆಳೆಗಳು",
+
+            arecanut:
+                "ಅಡಿಕೆ",
+
+            paddy:
+                "ಭತ್ತ",
+
+            search:
+                "🔍 ಹುಡುಕಿ",
+
+            contact:
+                "📞 ರೈತರನ್ನು ಸಂಪರ್ಕಿಸಿ",
+
+            footer:
+                "ಉತ್ತಮ ಭವಿಷ್ಯಕ್ಕಾಗಿ ಸ್ಮಾರ್ಟ್ ಕೃಷಿ.",
+
+            listening:
+                "🎤 ಕೇಳಲಾಗುತ್ತಿದೆ... ನಿಮ್ಮ ಸ್ಥಳವನ್ನು ಹೇಳಿ",
+
+            voiceError:
+                "ಧ್ವನಿ ಇನ್‌ಪುಟ್ ಅರ್ಥವಾಗಲಿಲ್ಲ.",
+
+            voiceNotSupported:
+                "ಈ ಬ್ರೌಸರ್‌ನಲ್ಲಿ ಧ್ವನಿ ಹುಡುಕಾಟ ಲಭ್ಯವಿಲ್ಲ."
+
+        }
+
+    };
+
+
+    /* =========================
+       LANGUAGE
+    ========================= */
+
+    function changeLanguage(language) {
+
+        localStorage.setItem(
+            "agrinexaLanguage",
+            language
+        );
+
+        document.documentElement.lang =
+            language;
+
+
+        document
+            .querySelectorAll("[data-key]")
+            .forEach(function(element) {
+
+                const key =
+                    element.getAttribute("data-key");
+
+                if (translations[language][key]) {
+
+                    element.textContent =
+                        translations[language][key];
+
+                }
+
+            });
+
+
+        updateLocations(language);
+
+    }
+
+
+    /* =========================
+       LOCATION NAMES
+    ========================= */
+
+    function updateLocations(language) {
+
+        const locationNames = {
+
+            en: {
+                ujire: "Ujire",
+                belthangady: "Belthangady",
+                bantwal: "Bantwal",
+                puttur: "Puttur"
+            },
+
+            kn: {
+                ujire: "ಉಜಿರೆ",
+                belthangady: "ಬೆಳ್ತಂಗಡಿ",
+                bantwal: "ಬಂಟ್ವಾಳ",
+                puttur: "ಪುತ್ತೂರು"
+            }
+
+        };
+
+
+        document
+            .querySelectorAll(".farmer-card")
+            .forEach(function(card) {
+
+                const location =
+                    card.getAttribute("data-location");
+
+                const element =
+                    card.querySelector(".location-name");
+
+                element.textContent =
+                    locationNames[language][location];
+
+            });
+
+    }
+
+
+    /* =========================
+       SEARCH
+    ========================= */
+
+    function searchFarmers() {
+
+        const input =
+            document
+                .getElementById("locationInput")
+                .value
+                .trim()
+                .toLowerCase();
+
+
+        const crop =
+            document
+                .getElementById("cropFilter")
+                .value;
+
+
+        const cards =
+            document.querySelectorAll(
+                ".farmer-card"
+            );
+
+
+        let found = false;
+
+
+        const locations = {
+
+            "ujire": "ujire",
+            "ಉಜಿರೆ": "ujire",
+
+            "belthangady": "belthangady",
+            "ಬೆಳ್ತಂಗಡಿ": "belthangady",
+
+            "bantwal": "bantwal",
+            "ಬಂಟ್ವಾಳ": "bantwal",
+
+            "puttur": "puttur",
+            "ಪುತ್ತೂರು": "puttur"
+
+        };
+
+
+        cards.forEach(function(card) {
+
+            const cardLocation =
+                card.getAttribute(
+                    "data-location"
+                );
+
+            const cardCrop =
+                card.getAttribute(
+                    "data-crop"
+                );
+
+
+            let locationMatch = true;
+            let cropMatch = true;
+
+
+            if (input !== "") {
+
+                const selectedLocation =
+                    locations[input] || input;
+
+                locationMatch =
+                    cardLocation.includes(
+                        selectedLocation
+                    );
+
+            }
+
+
+            if (crop !== "all") {
+
+                cropMatch =
+                    cardCrop === crop;
+
+            }
+
+
+            if (locationMatch && cropMatch) {
+
+                card.style.display = "block";
+
+                found = true;
+
+            } else {
+
+                card.style.display = "none";
+
+            }
+
+        });
+
+
+        showNoResults(found);
+
+    }
+
+
+    /* =========================
+       NO RESULTS
+    ========================= */
+
+    function showNoResults(found) {
+
+        const container =
+            document.getElementById(
+                "farmersContainer"
+            );
+
+
+        const oldMessage =
+            document.querySelector(
+                ".no-results"
+            );
+
+
+        if (oldMessage) {
+
+            oldMessage.remove();
+
+        }
+
+
+        if (!found) {
+
+            const language =
+                localStorage.getItem(
+                    "agrinexaLanguage"
+                ) || "en";
+
+
+            const message =
+                document.createElement("div");
+
+
+            message.className =
+                "no-results";
+
+
+            message.textContent =
+                language === "kn"
+                    ? "ಯಾವುದೇ ರೈತರು ಕಂಡುಬಂದಿಲ್ಲ."
+                    : "No farmers found.";
+
+
+            container.appendChild(message);
+
+        }
+
+    }
+
+
+    /* =========================
+       CONTACT
+    ========================= */
+
+    function contactFarmer(phone) {
+
+        window.location.href =
+            "tel:" + phone;
+
+    }
+
+
+    /* =========================
+       VOICE SEARCH
+    ========================= */
+
+    function startVoice() {
+
+        const language =
+            localStorage.getItem(
+                "agrinexaLanguage"
+            ) || "en";
+
+
+        const SpeechRecognition =
+            window.SpeechRecognition ||
+            window.webkitSpeechRecognition;
+
+
+        if (!SpeechRecognition) {
+
+            alert(
+                translations[language]
+                    .voiceNotSupported
+            );
+
+            return;
+
+        }
+
+
+        const recognition =
+            new SpeechRecognition();
+
+
+        recognition.lang =
+            language === "kn"
+                ? "kn-IN"
+                : "en-IN";
+
+
+        recognition.interimResults =
+            false;
+
+
+        recognition.maxAlternatives =
+            1;
+
+
+        document.getElementById(
+            "voiceMessage"
+        ).textContent =
+            translations[language]
+                .listening;
+
+
+        recognition.start();
+
+
+        recognition.onresult =
+            function(event) {
+
+                const text =
+                    event.results[0][0]
+                        .transcript;
+
+
+                document.getElementById(
+                    "locationInput"
+                ).value = text;
+
+
+                document.getElementById(
+                    "voiceMessage"
+                ).textContent = "";
+
+
+                searchFarmers();
+
+            };
+
+
+        recognition.onerror =
+            function() {
+
+                document.getElementById(
+                    "voiceMessage"
+                ).textContent = "";
+
+
+                alert(
+                    translations[language]
+                        .voiceError
+                );
+
+            };
+
+    }
+
+
+    /* =========================
+       PAGE LOAD
+    ========================= */
+
+    window.onload = function() {
+
+        const language =
+            localStorage.getItem(
+                "agrinexaLanguage"
+            ) || "en";
+
+
+        changeLanguage(language);
+
+    };
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Advisory - AgriNexa</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .weather-page {
+            padding: 50px 20px;
+            background: #f4f8f3;
+            min-height: 80vh;
+        }
+
+        .weather-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .weather-header h1 {
+            color: #1b5e20;
+        }
+
+        .weather-search {
+            max-width: 650px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+        }
+
+        .weather-search label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .voice-box {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .voice-box input {
+            flex: 1;
+            padding: 13px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .mic-btn {
+            width: 50px;
+            border: none;
+            border-radius: 8px;
+            background: #2e7d32;
+            color: white;
+            font-size: 21px;
+            cursor: pointer;
+        }
+
+        .mic-btn:hover {
+            background: #1b5e20;
+        }
+
+        .location-btn,
+        .weather-btn {
+            width: 100%;
+            padding: 13px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .location-btn {
+            background: white;
+            color: #2e7d32;
+            border: 2px solid #2e7d32;
+        }
+
+        .weather-btn {
+            background: #2e7d32;
+            color: white;
+            border: none;
+        }
+
+        .status {
+            text-align: center;
+            color: #2e7d32;
+            margin: 10px 0;
+        }
+
+        .weather-card {
+            max-width: 800px;
+            margin: 35px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+        }
+
+        .temperature {
+            font-size: 50px;
+            font-weight: bold;
+            color: #2e7d32;
+        }
+
+        .condition {
+            font-size: 20px;
+            margin: 10px 0 25px;
+        }
+
+        .weather-details {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 15px;
+        }
+
+        .detail {
+            background: #f1f8e9;
+            padding: 18px;
+            border-radius: 10px;
+        }
+
+        .detail h3 {
+            color: #2e7d32;
+        }
+
+        .advisory {
+            max-width: 1000px;
+            margin: 30px auto;
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            gap: 20px;
+        }
+
+        .advisory-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+
+        .advisory-card h2 {
+            color: #1b5e20;
+        }
+
+        .advisory-card li {
+            margin: 10px 0;
+        }
+
+        @media(max-width:700px) {
+            .weather-details,
+            .advisory {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <div class="logo" id="brand">🌿 AgriNexa</div>
+
+    <nav>
+        <a href="index.html" id="home">Home</a>
+        <a href="weather.html" id="weather">Weather</a>
+        <a href="buyers.html" id="buyers">Buyers</a>
+        <a href="workers.html" id="workers">Workers</a>
+        <a href="farmers.html" id="farmers">Farmers</a>
+    </nav>
+
+    <div class="language-switch">
+        <button onclick="setLanguage('en')">English</button>
+        <span>|</span>
+        <button onclick="setLanguage('kn')">ಕನ್ನಡ</button>
+    </div>
+
+</header>
+
+
+<section class="weather-page">
+
+    <div class="weather-header">
+        <h1 id="title">🌦️ Weather Advisory</h1>
+        <p id="description">
+            Get weather information and farming advice for your location.
+        </p>
+    </div>
+
+
+    <div class="weather-search">
+
+        <label id="locationLabel">
+            📍 Enter Your Location
+        </label>
+
+        <div class="voice-box">
+
+            <input
+                type="text"
+                id="locationInput"
+                placeholder="Enter location">
+
+            <button
+                class="mic-btn"
+                onclick="startVoice()">
+                🎤
+            </button>
+
+        </div>
+
+
+        <div class="status" id="voiceStatus"></div>
+
+
+        <button
+            class="location-btn"
+            onclick="getCurrentLocation()"
+            id="locationButton">
+
+            📍 Use My Current Location
+
+        </button>
+
+
+        <div class="status" id="locationStatus"></div>
+
+
+        <button
+            class="weather-btn"
+            onclick="checkWeather()"
+            id="weatherButton">
+
+            🌤️ Check Weather
+
+        </button>
+
+    </div>
+
+
+    <div class="weather-card">
+
+        <h2 id="place">
+            📍 Your Location
+        </h2>
+
+        <div class="temperature">
+            28°C
+        </div>
+
+        <div class="condition" id="condition">
+            Partly Cloudy
+        </div>
+
+
+        <div class="weather-details">
+
+            <div class="detail">
+                <h3 id="humidity">💧 Humidity</h3>
+                <p>78%</p>
+            </div>
+
+            <div class="detail">
+                <h3 id="rain">🌧️ Rain Chance</h3>
+                <p>30%</p>
+            </div>
+
+            <div class="detail">
+                <h3 id="wind">💨 Wind</h3>
+                <p>12 km/h</p>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="advisory">
+
+        <div class="advisory-card">
+
+            <h2 id="farmTitle">
+                🌱 Farm Advisory
+            </h2>
+
+            <p id="farmText">
+                Weather conditions are suitable for normal
+                farm activities. Monitor rainfall before
+                important agricultural activities.
+            </p>
+
+            <ul>
+                <li id="advice1">
+                    Check weather before spraying fertilizer.
+                </li>
+
+                <li id="advice2">
+                    Avoid spraying before heavy rainfall.
+                </li>
+
+                <li id="advice3">
+                    Plan farm activities according to weather.
+                </li>
+            </ul>
+
+        </div>
+
+
+        <div class="advisory-card">
+
+            <h2 id="fertilizerTitle">
+                🌾 Fertilizer Spraying Advice
+            </h2>
+
+            <p id="fertilizerText">
+                Avoid fertilizer spraying when rain is expected.
+                Choose a dry period for better effectiveness.
+            </p>
+
+            <ul>
+                <li id="fertilizer1">
+                    Avoid spraying before heavy rain.
+                </li>
+
+                <li id="fertilizer2">
+                    Prefer a dry weather period.
+                </li>
+
+                <li id="fertilizer3">
+                    Check the weather forecast before spraying.
+                </li>
+            </ul>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<footer>
+    <p id="footer">
+        Smart agriculture for a better tomorrow.
+    </p>
+</footer>
+
+
+<script>
+
+const translations = {
+
+    en: {
+        brand: "🌿 AgriNexa",
+        home: "Home",
+        weather: "Weather",
+        buyers: "Buyers",
+        workers: "Workers",
+        farmers: "Farmers",
+
+        title: "🌦️ Weather Advisory",
+
+        description:
+        "Get weather information and farming advice for your location.",
+
+        locationLabel:
+        "📍 Enter Your Location",
+
+        placeholder:
+        "Enter location",
+
+        locationButton:
+        "📍 Use My Current Location",
+
+        weatherButton:
+        "🌤️ Check Weather",
+
+        condition:
+        "Partly Cloudy",
+
+        humidity:
+        "💧 Humidity",
+
+        rain:
+        "🌧️ Rain Chance",
+
+        wind:
+        "💨 Wind",
+
+        farmTitle:
+        "🌱 Farm Advisory",
+
+        farmText:
+        "Weather conditions are suitable for normal farm activities. Monitor rainfall before important agricultural activities.",
+
+        advice1:
+        "Check weather before spraying fertilizer.",
+
+        advice2:
+        "Avoid spraying before heavy rainfall.",
+
+        advice3:
+        "Plan farm activities according to weather.",
+
+        fertilizerTitle:
+        "🌾 Fertilizer Spraying Advice",
+
+        fertilizerText:
+        "Avoid fertilizer spraying when rain is expected. Choose a dry period for better effectiveness.",
+
+        fertilizer1:
+        "Avoid spraying before heavy rain.",
+
+        fertilizer2:
+        "Prefer a dry weather period.",
+
+        fertilizer3:
+        "Check the weather forecast before spraying.",
+
+        listening:
+        "🎤 Listening... Speak your location",
+
+        voiceError:
+        "Could not understand the voice input.",
+
+        voiceNotSupported:
+        "Voice search is not supported in this browser.",
+
+        detecting:
+        "📍 Detecting your current location...",
+
+        locationSuccess:
+        "📍 Current location detected.",
+
+        locationDenied:
+        "Location permission was denied.",
+
+        locationError:
+        "Unable to get your location.",
+
+        footer:
+        "Smart agriculture for a better tomorrow."
+    },
+
+
+    kn: {
+        brand: "🌿 ಅಗ್ರಿನೆಕ್ಸಾ",
+        home: "ಮುಖಪುಟ",
+        weather: "ಹವಾಮಾನ",
+        buyers: "ಖರೀದಿದಾರರು",
+        workers: "ಕಾರ್ಮಿಕರು",
+        farmers: "ರೈತರು",
+
+        title: "🌦️ ಹವಾಮಾನ ಸಲಹೆ",
+
+        description:
+        "ನಿಮ್ಮ ಸ್ಥಳಕ್ಕೆ ಸಂಬಂಧಿಸಿದ ಹವಾಮಾನ ಮಾಹಿತಿ ಮತ್ತು ಕೃಷಿ ಸಲಹೆಗಳನ್ನು ಪಡೆಯಿರಿ.",
+
+        locationLabel:
+        "📍 ನಿಮ್ಮ ಸ್ಥಳವನ್ನು ನಮೂದಿಸಿ",
+
+        placeholder:
+        "ಸ್ಥಳವನ್ನು ನಮೂದಿಸಿ",
+
+        locationButton:
+        "📍 ನನ್ನ ಪ್ರಸ್ತುತ ಸ್ಥಳವನ್ನು ಬಳಸಿ",
+
+        weatherButton:
+        "🌤️ ಹವಾಮಾನ ಪರಿಶೀಲಿಸಿ",
+
+        condition:
+        "ಭಾಗಶಃ ಮೋಡ ಕವಿದಿದೆ",
+
+        humidity:
+        "💧 ತೇವಾಂಶ",
+
+        rain:
+        "🌧️ ಮಳೆಯ ಸಾಧ್ಯತೆ",
+
+        wind:
+        "💨 ಗಾಳಿ",
+
+        farmTitle:
+        "🌱 ಕೃಷಿ ಸಲಹೆ",
+
+        farmText:
+        "ಹವಾಮಾನ ಪರಿಸ್ಥಿತಿಗಳು ಸಾಮಾನ್ಯ ಕೃಷಿ ಚಟುವಟಿಕೆಗಳಿಗೆ ಸೂಕ್ತವಾಗಿವೆ. ಪ್ರಮುಖ ಕೃಷಿ ಚಟುವಟಿಕೆಗಳ ಮೊದಲು ಮಳೆಯ ಪರಿಸ್ಥಿತಿಯನ್ನು ಗಮನಿಸಿ.",
+
+        advice1:
+        "ಗೊಬ್ಬರ ಸಿಂಪಡಿಸುವ ಮೊದಲು ಹವಾಮಾನವನ್ನು ಪರಿಶೀಲಿಸಿ.",
+
+        advice2:
+        "ಭಾರಿ ಮಳೆಯ ಮೊದಲು ಸಿಂಪಡಿಸುವುದನ್ನು ತಪ್ಪಿಸಿ.",
+
+        advice3:
+        "ಹವಾಮಾನಕ್ಕೆ ಅನುಗುಣವಾಗಿ ಕೃಷಿ ಚಟುವಟಿಕೆಗಳನ್ನು ಯೋಜಿಸಿ.",
+
+        fertilizerTitle:
+        "🌾 ಗೊಬ್ಬರ ಸಿಂಪಡಿಸುವ ಸಲಹೆ",
+
+        fertilizerText:
+        "ಮಳೆಯ ನಿರೀಕ್ಷೆ ಇದ್ದಾಗ ಗೊಬ್ಬರ ಸಿಂಪಡಿಸುವುದನ್ನು ತಪ್ಪಿಸಿ. ಉತ್ತಮ ಪರಿಣಾಮಕ್ಕಾಗಿ ಒಣ ಹವಾಮಾನವನ್ನು ಆಯ್ಕೆಮಾಡಿ.",
+
+        fertilizer1:
+        "ಭಾರಿ ಮಳೆಯ ಮೊದಲು ಸಿಂಪಡಿಸುವುದನ್ನು ತಪ್ಪಿಸಿ.",
+
+        fertilizer2:
+        "ಒಣ ಹವಾಮಾನದ ಸಮಯವನ್ನು ಆಯ್ಕೆಮಾಡಿ.",
+
+        fertilizer3:
+        "ಸಿಂಪಡಿಸುವ ಮೊದಲು ಹವಾಮಾನ ಮುನ್ಸೂಚನೆಯನ್ನು ಪರಿಶೀಲಿಸಿ.",
+
+        listening:
+        "🎤 ಕೇಳಲಾಗುತ್ತಿದೆ... ನಿಮ್ಮ ಸ್ಥಳವನ್ನು ಹೇಳಿ",
+
+        voiceError:
+        "ಧ್ವನಿ ಇನ್‌ಪುಟ್ ಅರ್ಥವಾಗಲಿಲ್ಲ.",
+
+        voiceNotSupported:
+        "ಈ ಬ್ರೌಸರ್‌ನಲ್ಲಿ ಧ್ವನಿ ಹುಡುಕಾಟ ಲಭ್ಯವಿಲ್ಲ.",
+
+        detecting:
+        "📍 ನಿಮ್ಮ ಪ್ರಸ್ತುತ ಸ್ಥಳವನ್ನು ಪತ್ತೆಹಚ್ಚಲಾಗುತ್ತಿದೆ...",
+
+        locationSuccess:
+        "📍 ಪ್ರಸ್ತುತ ಸ್ಥಳ ಪತ್ತೆಯಾಗಿದೆ.",
+
+        locationDenied:
+        "ಸ್ಥಳ ಅನುಮತಿಯನ್ನು ನಿರಾಕರಿಸಲಾಗಿದೆ.",
+
+        locationError:
+        "ನಿಮ್ಮ ಸ್ಥಳವನ್ನು ಪಡೆಯಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ.",
+
+        footer:
+        "ಉತ್ತಮ ಭವಿಷ್ಯಕ್ಕಾಗಿ ಸ್ಮಾರ್ಟ್ ಕೃಷಿ."
+    }
+};
+
+
+function setLanguage(language) {
+
+    localStorage.setItem(
+        "agrinexaLanguage",
+        language
+    );
+
+    const t = translations[language];
+
+    document.getElementById("brand").textContent = t.brand;
+    document.getElementById("home").textContent = t.home;
+    document.getElementById("weather").textContent = t.weather;
+    document.getElementById("buyers").textContent = t.buyers;
+    document.getElementById("workers").textContent = t.workers;
+    document.getElementById("farmers").textContent = t.farmers;
+
+    document.getElementById("title").textContent = t.title;
+    document.getElementById("description").textContent = t.description;
+
+    document.getElementById("locationLabel").textContent =
+        t.locationLabel;
+
+    document.getElementById("locationInput").placeholder =
+        t.placeholder;
+
+    document.getElementById("locationButton").textContent =
+        t.locationButton;
+
+    document.getElementById("weatherButton").textContent =
+        t.weatherButton;
+
+    document.getElementById("condition").textContent =
+        t.condition;
+
+    document.getElementById("humidity").textContent =
+        t.humidity;
+
+    document.getElementById("rain").textContent =
+        t.rain;
+
+    document.getElementById("wind").textContent =
+        t.wind;
+
+    document.getElementById("farmTitle").textContent =
+        t.farmTitle;
+
+    document.getElementById("farmText").textContent =
+        t.farmText;
+
+    document.getElementById("advice1").textContent =
+        t.advice1;
+
+    document.getElementById("advice2").textContent =
+        t.advice2;
+
+    document.getElementById("advice3").textContent =
+        t.advice3;
+
+    document.getElementById("fertilizerTitle").textContent =
+        t.fertilizerTitle;
+
+    document.getElementById("fertilizerText").textContent =
+        t.fertilizerText;
+
+    document.getElementById("fertilizer1").textContent =
+        t.fertilizer1;
+
+    document.getElementById("fertilizer2").textContent =
+        t.fertilizer2;
+
+    document.getElementById("fertilizer3").textContent =
+        t.fertilizer3;
+
+    document.getElementById("footer").textContent =
+        t.footer;
+}
+
+
+function startVoice() {
+
+    const language =
+        localStorage.getItem("agrinexaLanguage") || "en";
+
+    const SpeechRecognition =
+        window.SpeechRecognition ||
+        window.webkitSpeechRecognition;
+
+    if (!SpeechRecognition) {
+
+        alert(
+            translations[language].voiceNotSupported
+        );
+
+        return;
+    }
+
+    const recognition =
+        new SpeechRecognition();
+
+    recognition.lang =
+        language === "kn"
+        ? "kn-IN"
+        : "en-IN";
+
+    recognition.interimResults = false;
+
+    recognition.maxAlternatives = 1;
+
+    document.getElementById("voiceStatus")
+        .textContent =
+        translations[language].listening;
+
+    recognition.start();
+
+    recognition.onresult = function(event) {
+
+        const text =
+            event.results[0][0].transcript;
+
+        document.getElementById("locationInput")
+            .value = text;
+
+        document.getElementById("voiceStatus")
+            .textContent = "";
+
+        checkWeather();
+    };
+
+    recognition.onerror = function() {
+
+        document.getElementById("voiceStatus")
+            .textContent = "";
+
+        alert(
+            translations[language].voiceError
+        );
+    };
+}
+
+
+function getCurrentLocation() {
+
+    const language =
+        localStorage.getItem("agrinexaLanguage") || "en";
+
+    if (!navigator.geolocation) {
+
+        document.getElementById("locationStatus")
+            .textContent =
+            translations[language].locationError;
+
+        return;
+    }
+
+    document.getElementById("locationStatus")
+        .textContent =
+        translations[language].detecting;
+
+    navigator.geolocation.getCurrentPosition(
+
+        function(position) {
+
+            const latitude =
+                position.coords.latitude;
+
+            const longitude =
+                position.coords.longitude;
+
+            document.getElementById("locationInput")
+                .value =
+                latitude.toFixed(5) +
+                ", " +
+                longitude.toFixed(5);
+
+            document.getElementById("locationStatus")
+                .textContent =
+                translations[language].locationSuccess;
+
+            document.getElementById("place")
+                .textContent =
+                "📍 Current Location";
+
+        },
+
+        function(error) {
+
+            if (
+                error.code ===
+                error.PERMISSION_DENIED
+            ) {
+
+                document.getElementById("locationStatus")
+                    .textContent =
+                    translations[language].locationDenied;
+
+            } else {
+
+                document.getElementById("locationStatus")
+                    .textContent =
+                    translations[language].locationError;
+            }
+        },
+
+        {
+            enableHighAccuracy: true,
+            timeout: 10000,
+            maximumAge: 0
+        }
+    );
+}
+
+
+function checkWeather() {
+
+    const location =
+        document.getElementById("locationInput")
+            .value.trim();
+
+    if (!location) {
+
+        alert("Please enter your location.");
+
+        return;
+    }
+
+    document.getElementById("place")
+        .textContent =
+        "📍 " + location;
+
+}
+
+
+window.onload = function() {
+
+    const language =
+        localStorage.getItem("agrinexaLanguage") || "en";
+
+    setLanguage(language);
+
+};
+
+</script>
+
+</body>
+</html>
